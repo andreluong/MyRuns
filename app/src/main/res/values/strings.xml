@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">MyRuns</string>
+    <string name="profileLabel">Profile photo:</string>
+    <string name="change">Change</string>
+    <string name="nameLabel">Name:</string>
+    <string name="nameHint">Your name here</string>
+    <string name="emailLabel">Email:</string>
+    <string name="emailHint">Your email here</string>
+    <string name="phoneLabel">Phone:</string>
+    <string name="phoneHint">Your phone number here</string>
+    <string name="genderLabel">Gender:</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="classLabel">Class:</string>
+    <string name="classHint">e.g. 2012</string>
+    <string name="majorLabel">Major:</string>
+    <string name="majorHint">Your major here</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+
+    <string-array name="input_type_array">
+        <item>Manual Entry</item>
+        <item>GPS</item>
+        <item>Automatic</item>
+    </string-array>
+    
+    <string-array name="activity_array">
+        <item>Running</item>
+        <item>Walking</item>
+        <item>Standing</item>
+        <item>Cycling</item>
+        <item>Hiking</item>
+        <item>Downhill Skiing</item>
+        <item>Cross-Country Skiing</item>
+        <item>Snowboarding</item>
+        <item>Skating</item>
+        <item>Swimming</item>
+        <item>Mountain Biking</item>
+        <item>Wheelchair</item>
+    </string-array>
+</resources>
