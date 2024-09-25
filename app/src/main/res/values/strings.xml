@@ -18,6 +18,21 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
 
+    <string name="accountLabel">Account</string>
+    <string name="profileLabel">Profile</string>
+    <string name="profileDescription">Name, Email, Class, etc</string>
+    <string name="privacyLabel">Privacy Setting</string>
+    <string name="privacyDescription">Post your records anonymously</string>
+    <string name="additionalSettingsLabel">Additional Settings</string>
+    <string name="unitPreferenceLabel">Unit Preference</string>
+    <string name="unitPreferenceDescription">Select the units for the distance values</string>
+    <string name="commentLabel">Comment</string>
+    <string name="commentDescription">Any suggestions to this course</string>
+    <string name="start">Start</string>
+    <string name="sync">Sync</string>
+    <string name="activityTypeLabel">Activity Type:</string>
+    <string name="inputTypeLabel">Input Type:</string>
+
     <string-array name="input_type_array">
         <item>Manual Entry</item>
         <item>GPS</item>

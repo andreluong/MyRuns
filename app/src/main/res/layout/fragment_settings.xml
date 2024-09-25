@@ -20,13 +20,13 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Account"
+                    android:text="@string/accountLabel"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
-                    android:id="@+id/profileButton"
+                    android:id="@+id/button_open_profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?android:attr/selectableItemBackground"
@@ -38,14 +38,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Profile"
+                        android:text="@string/profileLabel"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Name, Email, Class, etc"
+                        android:text="@string/profileDescription"
                         android:textColor="@android:color/darker_gray"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -57,7 +57,7 @@
                     android:background="?android:attr/listDivider" />
 
                 <RelativeLayout
-                    android:id="@+id/privacyButton"
+                    android:id="@+id/button_privacy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?android:attr/selectableItemBackground"
@@ -74,20 +74,20 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Privacy Setting"
+                            android:text="@string/privacyLabel"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Post your records anonymously"
+                            android:text="@string/privacyDescription"
                             android:textColor="@android:color/darker_gray"
                             android:textSize="14sp" />
                     </LinearLayout>
 
                     <CheckBox
-                        android:id="@+id/privacyCheckBox"
+                        android:id="@+id/check_box_privacy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true" />
@@ -103,13 +103,13 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Additional Settings"
+                    android:text="@string/additionalSettingsLabel"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <LinearLayout
-                    android:id="@+id/unitPreferenceButton"
+                    android:id="@+id/button_open_unit_preference"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?android:attr/selectableItemBackground"
@@ -121,27 +121,26 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Unit Preference"
+                        android:text="@string/unitPreferenceLabel"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Select the units for the distance values"
+                        android:text="@string/unitPreferenceDescription"
                         android:textColor="@android:color/darker_gray"
                         android:textSize="14sp" />
                 </LinearLayout>
 
                 <View
-                    android:id="@+id/divider"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginHorizontal="15dp"
                     android:background="?android:attr/listDivider" />
 
                 <LinearLayout
-                    android:id="@+id/commentButton"
+                    android:id="@+id/button_open_comment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?android:attr/selectableItemBackground"
@@ -153,20 +152,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Comment"
+                        android:text="@string/commentLabel"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Any suggestions to this course"
+                        android:text="@string/commentDescription"
                         android:textColor="@android:color/darker_gray"
                         android:textSize="14sp" />
                 </LinearLayout>
-
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

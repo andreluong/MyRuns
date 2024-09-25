@@ -11,10 +11,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Input Type:" />
+            android:text="@string/inputTypeLabel" />
 
         <Spinner
-            android:id="@+id/inputSpinner"
+            android:id="@+id/spinner_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:spinnerMode="dropdown"
@@ -23,10 +23,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Activity Type:" />
+            android:text="@string/activityTypeLabel" />
 
         <Spinner
-            android:id="@+id/activitySpinner"
+            android:id="@+id/spinner_activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:spinnerMode="dropdown"
@@ -36,28 +36,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:gravity="center"
-            >
+            android:gravity="center">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/button_start"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingVertical="12dp"
                 android:paddingHorizontal="60dp"
-                android:text="Start" />
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="10dp" />
+                android:layout_marginVertical="5dp"
+                android:text="@string/start" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/button_sync"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingVertical="12dp"
                 android:paddingHorizontal="60dp"
-                android:text="Sync" />
+                android:layout_marginVertical="5dp"
+                android:text="@string/sync" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

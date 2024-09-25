@@ -3,63 +3,105 @@ package com.andre.myruns
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.TypedValue
-import android.util.TypedValue.COMPLEX_UNIT_DIP
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 
 class SettingsFragment : Fragment() {
+    private val TAG = "debug:"
+
+    private lateinit var settingsPreference: SettingsPreference
+    private lateinit var comment: String
+
+    private var privacy = false
     private var selectedUnitIndex = -1
 
-    // inflate the layout
+    // Inflate the layout
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = inflater.inflate(R.layout.fragment_settings, container, false)!!
+        val view = inflater.inflate(
+            R.layout.fragment_settings,
+            container,
+            false)!!
 
-        val profileButton = view.findViewById<LinearLayout>(R.id.profileButton)
+        // Load settings from SharedPreferences
+        settingsPreference = SettingsPreference(this.requireContext())
+        loadSettingsPreference()
+
+        // Initialize buttons
+        initProfileButton(view)
+        initPrivacyButton(view)
+        initUnitPreferenceButton(view)
+        initCommentButton(view)
+
+        return view
+    }
+
+    private fun loadSettingsPreference() {
+        val settings = settingsPreference.getSettings()
+        privacy = settings.privacy
+        selectedUnitIndex = settings.unit
+        comment = settings.comment
+
+        Log.d(TAG, "Loaded settings")
+    }
+
+    private fun initProfileButton(view: View) {
+        val profileButton = view.findViewById<LinearLayout>(R.id.button_open_profile)
         profileButton.setOnClickListener {
+            // Launch profile activity
             val profileIntent = Intent(requireContext(), ProfileActivity::class.java)
             startActivity(profileIntent)
         }
+    }
 
-        val privacyButton = view.findViewById<RelativeLayout>(R.id.privacyButton)
-        privacyButton.setOnClickListener {
-            val checkBox = view.findViewById<CheckBox>(R.id.privacyCheckBox)
-            checkBox.isChecked = !checkBox.isChecked
+    private fun initPrivacyButton(view: View) {
+        val checkBox = view.findViewById<CheckBox>(R.id.check_box_privacy)
+        checkBox.isChecked = privacy
+
+        // Save privacy to preference
+        fun savePrivacy(isChecked: Boolean) {
+            privacy = isChecked
+            settingsPreference.savePrivacy(privacy)
+            Log.d(TAG, "Saved privacy: $privacy")
         }
 
-        val unitPreferenceButton = view.findViewById<LinearLayout>(R.id.unitPreferenceButton)
+        checkBox.setOnCheckedChangeListener { _, isChecked ->
+            savePrivacy(isChecked)
+        }
+
+        val privacyButton = view.findViewById<RelativeLayout>(R.id.button_privacy)
+        privacyButton.setOnClickListener {
+            checkBox.isChecked = !checkBox.isChecked
+        }
+    }
+
+    private fun initUnitPreferenceButton(view: View) {
+        val unitPreferenceButton =
+            view.findViewById<LinearLayout>(R.id.button_open_unit_preference)
         unitPreferenceButton.setOnClickListener {
             showUnitPreferenceDialog()
         }
-
-        val commentButton = view.findViewById<LinearLayout>(R.id.commentButton)
-        commentButton.setOnClickListener {
-            showCommentDialog()
-        }
-
-        return view
     }
 
     private fun showUnitPreferenceDialog() {
         AlertDialog.Builder(requireContext())
             .setTitle("Unit Preference")
             .setSingleChoiceItems(
-                arrayOf("Metric (km)", "Imperial (mi)"), selectedUnitIndex
+                UnitsOfMeasure.entries.map { it.value }.toTypedArray(),
+                selectedUnitIndex
             ) { dialog, which ->
                 selectedUnitIndex = which
+                settingsPreference.saveUnit(selectedUnitIndex)
+                Log.d(TAG, "Saved unit preference")
                 dialog.dismiss()
             }
             .setNegativeButton("Cancel") { _, _ ->
@@ -69,31 +111,20 @@ class SettingsFragment : Fragment() {
             .show()
     }
 
-    private fun showCommentDialog() {
-        val container = FrameLayout(requireContext())
-        val params = FrameLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
-
-        // Convert 20dp to pixels programmatically
-        val marginInDp = TypedValue.applyDimension(
-            COMPLEX_UNIT_DIP,
-            20f,
-            resources.displayMetrics
-        ).toInt()
-        params.setMargins(marginInDp, marginInDp / 2, marginInDp, marginInDp / 2)
-
-        // Text input
-        val input = EditText(requireContext())
-        input.layoutParams = params
-        container.addView(input)
-
-        AlertDialog.Builder(requireContext())
-            .setTitle("Comment")
-            .setView(container)
-            .setPositiveButton("Ok") { _, _ ->
+    private fun initCommentButton(view: View) {
+        val commentButton = view.findViewById<LinearLayout>(R.id.button_open_comment)
+        commentButton.setOnClickListener {
+            DialogUtils.showCommentDialog(
+                requireContext(),
+                comment
+            ) { commentEntered ->
+                // On OK, save comment to preference
+                if (commentEntered != null) {
+                    comment = commentEntered
+                    settingsPreference.saveComment(comment)
+                    Log.d(TAG, "Saved comment: $comment")
+                }
             }
-            .setNegativeButton("Cancel") { _, _ ->
-            }
-            .create()
-            .show()
+        }
     }
 }

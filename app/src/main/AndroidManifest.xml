@@ -26,6 +26,10 @@
 
         <activity android:name=".ProfileActivity" />
 
+        <activity android:name=".ManualEntryActivity" />
+        <activity android:name=".GpsActivity" />
+        <activity android:name=".AutomaticActivity" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.andre.myruns"
