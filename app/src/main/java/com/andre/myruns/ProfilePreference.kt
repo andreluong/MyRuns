@@ -11,7 +11,6 @@ class ProfilePreference(context: Context) {
     private val GENDER_KEY = "gender"
     private val CLASS_KEY = "class"
     private val MAJOR_KEY = "major"
-
     private val preference = context.getSharedPreferences(PREFERENCE_NAME, MODE_PRIVATE)
 
     fun getProfile(): Profile {

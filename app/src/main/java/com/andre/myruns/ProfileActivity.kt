@@ -30,10 +30,6 @@ class ProfileActivity: AppCompatActivity(), View.OnClickListener {
     private val SAVED_IMG_FILENAME = "savedPhoto.jpg"
     private val AUTHORITY = "com.andre.myruns"
 
-    private lateinit var changePhotoButton: Button
-    private lateinit var cancelButton: Button
-    private lateinit var saveButton: Button
-
     private lateinit var photoView: ImageView
     private lateinit var editName: EditText
     private lateinit var editEmail: EditText
@@ -56,11 +52,13 @@ class ProfileActivity: AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-        title = "Profile"
-        profilePreference = ProfilePreference(this)
 
         initButtons()
         initInputFields()
+
+        // Load profile from SharedPreferences
+        profilePreference = ProfilePreference(this)
+        loadProfileFromPreference()
 
         // Finds the temp img file
         tempImgFile = File(getExternalFilesDir(null), TEMP_IMG_FILENAME)
@@ -115,42 +113,39 @@ class ProfileActivity: AppCompatActivity(), View.OnClickListener {
             photoView.setImageBitmap(it)
         }
 
-        loadProfileFromPreference()
     }
 
     private fun initButtons() {
-        changePhotoButton = findViewById(R.id.changePhotoButton)
-        changePhotoButton.setOnClickListener(this)
-
-        cancelButton = findViewById(R.id.cancelButton)
-        cancelButton.setOnClickListener(this)
-
-        saveButton = findViewById(R.id.saveButton)
-        saveButton.setOnClickListener(this)
+        findViewById<Button>(R.id.button_change_photo)
+            .setOnClickListener(this)
+        findViewById<Button>(R.id.button_cancel_profile)
+            .setOnClickListener(this)
+        findViewById<Button>(R.id.button_save_profile)
+            .setOnClickListener(this)
     }
 
     private fun initInputFields() {
-        photoView = findViewById(R.id.editPhoto)
-        editName = findViewById(R.id.editName)
-        editEmail = findViewById(R.id.editEmail)
-        editPhone = findViewById(R.id.editPhone)
-        editGender = findViewById(R.id.editGender)
-        editClass = findViewById(R.id.editClass)
-        editMajor = findViewById(R.id.editMajor)
+        photoView = findViewById(R.id.image_view_photo)
+        editName = findViewById(R.id.edit_name)
+        editEmail = findViewById(R.id.edit_email)
+        editPhone = findViewById(R.id.edit_phone)
+        editGender = findViewById(R.id.edit_gender)
+        editClass = findViewById(R.id.edit_class)
+        editMajor = findViewById(R.id.edit_major)
     }
 
     // Button click functionality
     override fun onClick(view: View?) {
         when (view?.id) {
-            R.id.changePhotoButton -> {
+            R.id.button_change_photo -> {
                 Log.d(TAG, "Open photo dialog")
                 showPhotoDialog()
             }
-            R.id.cancelButton -> {
+            R.id.button_cancel_profile -> {
                 Log.d(TAG, "Leaving profile activity")
                 finish()
             }
-            R.id.saveButton -> {
+            R.id.button_save_profile -> {
                 Log.d(TAG, "Saving profile...")
                 saveProfile()
                 finish()
@@ -200,9 +195,9 @@ class ProfileActivity: AppCompatActivity(), View.OnClickListener {
         editMajor.setText(profile.major)
 
         if (profile.gender.equals("Female", true)) {
-            editGender.check(R.id.genderFemale)
+            editGender.check(R.id.gender_female)
         } else if (profile.gender.equals("Male", true)) {
-            editGender.check(R.id.genderMale)
+            editGender.check(R.id.gender_male)
         }
 
         Log.d(TAG, "Loaded user profile")

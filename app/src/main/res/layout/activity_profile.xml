@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="@string/profileLabel" />
+                android:text="@string/profilePhotoLabel" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -31,11 +31,11 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/editPhoto"
+                    android:id="@+id/image_view_photo"
                     android:layout_width="120dp"
                     android:layout_height="100dp"
                     android:layout_marginHorizontal="90dp"
-                    android:contentDescription="@string/profileLabel"
+                    android:contentDescription="@string/profilePhotoLabel"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     tools:srcCompat="@tools:sample/avatars" />
@@ -46,7 +46,7 @@
                     android:layout_weight="1" />
 
                 <Button
-                    android:id="@+id/changePhotoButton"
+                    android:id="@+id/button_change_photo"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -61,7 +61,7 @@
                 android:text="@string/nameLabel" />
 
             <EditText
-                android:id="@+id/editName"
+                android:id="@+id/edit_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -75,7 +75,7 @@
                 android:text="@string/emailLabel" />
 
             <EditText
-                android:id="@+id/editEmail"
+                android:id="@+id/edit_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -89,7 +89,7 @@
                 android:text="@string/phoneLabel" />
 
             <EditText
-                android:id="@+id/editPhone"
+                android:id="@+id/edit_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -103,21 +103,21 @@
                 android:text="@string/genderLabel" />
 
             <RadioGroup
-                android:id="@+id/editGender"
+                android:id="@+id/edit_gender"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="5dp"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/genderFemale"
+                    android:id="@+id/gender_female"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/female" />
 
                 <RadioButton
-                    android:id="@+id/genderMale"
+                    android:id="@+id/gender_male"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -130,7 +130,7 @@
                 android:text="@string/classLabel" />
 
             <EditText
-                android:id="@+id/editClass"
+                android:id="@+id/edit_class"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
@@ -144,7 +144,7 @@
                 android:text="@string/majorLabel" />
 
             <EditText
-                android:id="@+id/editMajor"
+                android:id="@+id/edit_major"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
@@ -160,22 +160,20 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/saveButton"
+                    android:id="@+id/button_save_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="55dp"
+                    android:layout_marginHorizontal="10dp"
                     android:text="@string/save"
                     app:cornerRadius="0dp" />
 
-                <Space
-                    android:layout_width="10dp"
-                    android:layout_height="match_parent" />
-
                 <Button
-                    android:id="@+id/cancelButton"
+                    android:id="@+id/button_cancel_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="55dp"
+                    android:layout_marginHorizontal="10dp"
                     android:text="@string/cancel"
                     app:cornerRadius="0dp" />
             </LinearLayout>
