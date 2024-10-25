@@ -1,10 +1,11 @@
-package com.andre.myruns
+package com.andre_luong.myruns2
 
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.Intent.ACTION_PICK
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment.DIRECTORY_PICTURES
 import android.provider.MediaStore.ACTION_IMAGE_CAPTURE
 import android.provider.MediaStore.EXTRA_OUTPUT
 import android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
@@ -28,7 +29,7 @@ class ProfileActivity: AppCompatActivity(), View.OnClickListener {
     private val TAG = "debug:"
     private val TEMP_IMG_FILENAME = "tempPhoto.jpg"
     private val SAVED_IMG_FILENAME = "savedPhoto.jpg"
-    private val AUTHORITY = "com.andre.myruns"
+    private val AUTHORITY = "com.andre_luong.myruns2"
 
     private lateinit var photoView: ImageView
     private lateinit var editName: EditText
@@ -61,7 +62,10 @@ class ProfileActivity: AppCompatActivity(), View.OnClickListener {
         loadProfileFromPreference()
 
         // Finds the temp img file
-        tempImgFile = File(getExternalFilesDir(null), TEMP_IMG_FILENAME)
+        tempImgFile = File(
+            getExternalFilesDir(DIRECTORY_PICTURES),
+            TEMP_IMG_FILENAME
+        )
         tempImgUri = FileProvider.getUriForFile(
             this,
             AUTHORITY,
@@ -69,7 +73,10 @@ class ProfileActivity: AppCompatActivity(), View.OnClickListener {
         )
 
         // Finds the saved img file
-        savedImgFile = File(getExternalFilesDir(null), SAVED_IMG_FILENAME)
+        savedImgFile = File(
+            getExternalFilesDir(DIRECTORY_PICTURES),
+            SAVED_IMG_FILENAME
+        )
         val savedImgUri = FileProvider.getUriForFile(
             this,
             AUTHORITY,
@@ -101,6 +108,11 @@ class ProfileActivity: AppCompatActivity(), View.OnClickListener {
                 if (result.resultCode == RESULT_OK) {
                     val selectedImageUri: Uri? = result.data?.data
                     if (selectedImageUri != null) {
+                        tempImgFile = Utils.copyUriToFile(
+                            this,
+                            selectedImageUri,
+                            tempImgFile
+                        )
                         changeProfilePhoto(selectedImageUri)
                     }
                     Log.d(TAG, "Selected profile photo from gallery")
@@ -215,6 +227,7 @@ class ProfileActivity: AppCompatActivity(), View.OnClickListener {
 
         // Overwrites the saved img file with temp if a photo was taken this session
         if (photoTaken) {
+
             tempImgFile.copyTo(savedImgFile, overwrite = true)
             Log.d(TAG, "Overwrite saved photo")
         }

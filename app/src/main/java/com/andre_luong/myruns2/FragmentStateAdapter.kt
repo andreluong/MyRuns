@@ -1,4 +1,4 @@
-package com.andre.myruns
+package com.andre_luong.myruns2
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

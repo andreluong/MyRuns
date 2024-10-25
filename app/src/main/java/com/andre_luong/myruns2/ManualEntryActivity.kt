@@ -1,4 +1,4 @@
-package com.andre.myruns
+package com.andre_luong.myruns2
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import java.util.Calendar
 import java.util.Calendar.DAY_OF_MONTH
@@ -41,7 +42,7 @@ class ManualEntryActivity: AppCompatActivity(), View.OnClickListener {
         when (view?.id) {
             R.id.button_cancel_manual_entry -> finish()
             R.id.button_save_manual_entry -> {
-                // TODO: Save
+                Toast.makeText(this, "WIP: Save", Toast.LENGTH_SHORT).show()
             }
         }
     }

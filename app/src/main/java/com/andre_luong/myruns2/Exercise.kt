@@ -1,4 +1,4 @@
-package com.andre.myruns
+package com.andre_luong.myruns2
 
 data class Exercise(
     val date: Long,

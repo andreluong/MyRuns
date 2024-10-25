@@ -1,4 +1,4 @@
-package com.andre.myruns
+package com.andre_luong.myruns2
 
 import android.content.Intent
 import android.os.Bundle
@@ -23,7 +23,6 @@ class StartFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = inflater.inflate(R.layout.fragment_start, container, false)!!
 
         initSpinner(view, R.id.spinner_input, R.array.input_type_array)
         initSpinner(view, R.id.spinner_activity, R.array.activity_array)

@@ -1,4 +1,4 @@
-package com.andre.myruns
+package com.andre_luong.myruns2
 
 import android.app.AlertDialog
 import android.content.Context

@@ -1,8 +1,9 @@
-package com.andre.myruns
+package com.andre_luong.myruns2
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class AutomaticActivity: AppCompatActivity(), View.OnClickListener {
@@ -18,7 +19,7 @@ class AutomaticActivity: AppCompatActivity(), View.OnClickListener {
         when (view?.id) {
             R.id.button_cancel_map -> finish()
             R.id.button_save_map -> {
-                // TODO: Save
+                Toast.makeText(this, "WIP: Save", Toast.LENGTH_SHORT).show()
             }
         }
     }

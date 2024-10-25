@@ -1,4 +1,4 @@
-package com.andre.myruns
+package com.andre_luong.myruns2
 
 enum class EntryDetails(val id: Int, val value: String) {
     DATE(0, "Date"),

@@ -1,4 +1,4 @@
-package com.andre.myruns
+package com.andre_luong.myruns2
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
