@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name_formal">Andre_Luong_MyRuns2</string>
+    <string name="app_name_formal">Andre_Luong_MyRuns4</string>
     <string name="app_name">MyRuns</string>
     <string name="profilePhotoLabel">Profile photo:</string>
     <string name="change">Change</string>
@@ -33,6 +33,20 @@
     <string name="sync">Sync</string>
     <string name="activityTypeLabel">Activity Type:</string>
     <string name="inputTypeLabel">Input Type:</string>
+
+    <string name="settings_preference_name">SettingsPreference</string>
+    <string name="privacy_key">privacy</string>
+    <string name="unit_key">unit</string>
+    <string name="comment_key">comment</string>
+
+    <string name="delete_label">Delete</string>
+    <string name="input_type_label">Input Type</string>
+    <string name="activity_type_label">Activity Type</string>
+    <string name="date_and_time_label">Date and time</string>
+    <string name="duration_label">Duration</string>
+    <string name="distance_label">Distance</string>
+    <string name="calories_label">Calories</string>
+    <string name="heart_rate_label">Heart Rate</string>
 
     <string-array name="input_type_array">
         <item>Manual Entry</item>

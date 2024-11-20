@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
     <uses-feature android:name="android.hardware.camera" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyRuns"
         tools:targetApi="31">
+
+        <service android:name=".TrackingService" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
 
         <activity
             android:name=".MainActivity"
@@ -27,12 +36,14 @@
         <activity android:name=".ProfileActivity" />
 
         <activity android:name=".ManualEntryActivity" />
-        <activity android:name=".GpsActivity" />
-        <activity android:name=".AutomaticActivity" />
+
+        <activity android:name=".HistoryEntryActivity" />
+
+        <activity android:name=".MapDisplayActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.andre_luong.myruns2"
+            android:authorities="com.andre_luong.myruns4"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -40,5 +51,4 @@
                 android:resource="@xml/file_paths" />
         </provider>
     </application>
-
 </manifest>
