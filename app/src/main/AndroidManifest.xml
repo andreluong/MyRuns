@@ -43,7 +43,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.andre_luong.myruns4"
+            android:authorities="com.andre_luong.myruns5"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
